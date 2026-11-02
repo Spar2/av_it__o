@@ -160,7 +160,7 @@ render=function(){const desk=isDesk();const h0=location.hash.slice(2).split('?')
  document.querySelectorAll('.tabbar .tab').forEach(t=>t.classList.toggle('on',t.dataset.r===(h[0]==='fav'?'fav':h[0]==='chat'?'chat':'home')));
  const fq=$('#fq');if(fq){fq.oninput=()=>{st.q=fq.value;const r=$('#feedres');if(!r)return;const l=feedList();r.innerHTML=l.length?mason(l,desk?3:2):EMPTY()}}
  const onFeed=st.mode==='feed'&&(h[0]===''||h[0]==='feed');if(onFeed&&needOnb()&&!tour.on&&!$('#modal').classList.contains('on'))setTimeout(openOnb,120);
- if(tour.on)setTimeout(tourPlace,60)};
+ };
 /* ---- демо-тур ---- */
 const tour={on:false,i:0};
 const STEPS=[

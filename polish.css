@@ -1,0 +1,66 @@
+/* ===== polish layer: motion & finish (transform/opacity only) ===== */
+:root{--d1:110ms;--d2:150ms;--d3:240ms;--d4:400ms;--prod:cubic-bezier(.2,0,.38,.9);--expr:cubic-bezier(.4,.14,.3,1);--in:cubic-bezier(0,0,.3,1);--out:cubic-bezier(.4,0,1,1);--ease:var(--expr);--ease-in:var(--out)}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{-webkit-tap-highlight-color:transparent}
+#app{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+/* overlays & sheets: no display toggling, fade + slide */
+.overlay{display:flex!important;opacity:0;visibility:hidden;pointer-events:none;transition:opacity var(--d3) var(--in),visibility 0s linear var(--d3)}
+.overlay.on{opacity:1;visibility:visible;pointer-events:auto;transition:opacity var(--d3) var(--in),visibility 0s}
+.overlay .sheet{transform:translate3d(0,24px,0);transition:transform var(--d4) var(--expr);box-shadow:0 -8px 40px rgba(0,0,0,.12);overscroll-behavior:contain}
+.overlay.on .sheet{transform:none}
+.overlay:not(.on) .sheet{transition-duration:var(--d2);transition-timing-function:var(--out)}
+body.desk .overlay .sheet{transform:translate3d(0,14px,0) scale(.97);opacity:0;transition:transform var(--d2) var(--ease),opacity var(--d2) var(--ease);box-shadow:0 24px 70px rgba(0,0,0,.22)}
+body.desk .overlay.on .sheet{transform:none;opacity:1}
+.sheet h3{letter-spacing:-.02em;line-height:1.15}
+/* toast */
+#toast{transform:translate3d(-50%,8px,0);transition:opacity var(--d2) var(--in),transform var(--d2) var(--in);box-shadow:0 8px 24px rgba(0,0,0,.18)}
+#toast.on{transform:translate3d(-50%,0,0)}
+/* switch: transform instead of left */
+.sw{transition:background-color var(--d1) var(--ease)}
+.sw::after{transition:transform var(--d1) var(--prod)!important;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.sw.on::after{left:2px!important;transform:translateX(14px)}
+/* press & hover micro-interactions */
+.btn,.subbtn,.tab,.chip,.demobtn,.aboutbtn,.vpill,.seg3 button,.mpick a,.dtile,.card,.dcard{transition:transform var(--d1) var(--ease),background-color var(--d1) var(--ease),color var(--d1) var(--ease),opacity var(--d1) var(--ease)}
+.btn:active,.subbtn:active,.chip:active,.demobtn:active,.aboutbtn:active,.seg3 button:active,.mpick a:active,.vpill:active{transform:scale(.96)}
+.card:active,.dcard:active,.dtile:active{transform:scale(.985)}
+.tab:active{transform:scale(.92)}
+@media (hover:hover){body.desk .dcard:hover,body.desk .dtile:hover{transform:translate3d(0,-2px,0)}.demobtn:hover{transform:translate3d(0,-1px,0)}}
+:focus-visible{outline:2px solid #00AAFF;outline-offset:2px;border-radius:8px}
+/* route enter + stagger */
+.r-enter>*{animation:rIn var(--d3) var(--in) both}
+.r-enter .grid>.card,.r-enter .dgrid>.dcard,.r-enter .post,.r-enter .fpost{animation:rIn var(--d3) var(--in) both;animation-delay:calc(min(var(--i,0),6)*40ms)}
+@keyframes rIn{from{opacity:0;transform:translate3d(0,8px,0)}to{opacity:1;transform:none}}
+/* images: skeleton + fade-in, no decode jank */
+.ph{background-color:#F2F1F0}
+.ph img,.card img,.dcard img{opacity:0;transition:opacity var(--d3) var(--ease)}
+.ph img.ld,.card img.ld,.dcard img.ld{opacity:1}
+.ph:not(.lded){background-image:linear-gradient(100deg,#F2F1F0 30%,#F8F8F7 50%,#F2F1F0 70%);background-size:300% 100%}
+/* tour */
+#tour{display:block!important;opacity:0;visibility:hidden;pointer-events:none;transition:opacity var(--d3) var(--in),visibility 0s linear var(--d3)}
+#tour.on{opacity:1;visibility:visible;pointer-events:auto;transition:opacity var(--d3) var(--in),visibility 0s}
+#tour.dim{background:rgba(10,12,16,.55)}
+#tour .spot{left:0;top:0;transition:transform var(--d4) var(--expr),opacity var(--d3) var(--in)!important;outline:none;box-shadow:0 0 0 9999px rgba(10,12,16,.55),0 0 0 2px #00AAFF;will-change:transform,opacity}
+#tour .spot.hide{transition:opacity var(--d2) var(--out)!important}
+#tour .spot.pulse::after{content:"";position:absolute;inset:-2px;border-radius:inherit;box-shadow:0 0 0 2px #00AAFF;animation:ring1 var(--d4) var(--expr) 1}
+@keyframes ring1{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(1.04)}}
+#tour .spot.hide,#tour .tip.hide{opacity:0}
+#tour .ring{position:absolute;left:0;top:0;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:rgba(0,170,255,.35);box-shadow:0 0 0 2px #fff,0 0 0 4px #00AAFF;pointer-events:none;opacity:0;transition:transform 640ms var(--ease),opacity var(--d2) var(--ease);will-change:transform}
+#tour .ring.on{opacity:1}#tour .ring::after{content:"";position:absolute;inset:-10px;border-radius:50%;border:2px solid #00AAFF;animation:pulse 1.6s var(--in) infinite}
+@keyframes pulse{from{transform:scale(.4);opacity:.9}to{transform:scale(1.6);opacity:0}}
+#tour .tip{left:0;top:0;transition:opacity var(--d3) var(--in),transform var(--d4) var(--expr);will-change:transform,opacity;box-shadow:0 18px 50px rgba(0,0,0,.28);border-radius:18px;padding:16px 18px}
+#tour .tip.hide{transition:opacity var(--d2) var(--out)}
+#tour .tip .tbody{transition:opacity var(--d2) var(--in)}#tour .tip .tbody.x{opacity:0}
+.tstep{font-size:12px;font-weight:700;color:#00AAFF;letter-spacing:.02em;text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.ttext{font-size:15px;line-height:1.45;color:#111;margin-bottom:12px}
+.tprog{height:3px;border-radius:2px;background:#EDEEF0;overflow:hidden;margin:-4px 0 12px}
+.tprog i{display:block;height:100%;background:#00AAFF;transform-origin:0 50%;transform:scaleX(0)}
+.tbtns{display:flex;gap:6px;align-items:center}
+.tdots{display:flex;gap:4px;margin-left:auto}.tdots b{width:6px;height:6px;border-radius:3px;background:#DADCE0;transition:transform var(--d2) var(--ease),background-color var(--d2)}.tdots b.on{background:#00AAFF;transform:scale(1.35)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:1ms!important;animation-delay:0ms!important;animation-iteration-count:1!important;transition-duration:1ms!important;scroll-behavior:auto!important}}
+.tbtns .btn{white-space:nowrap;padding:0 12px}
+body.mob .tbtns .btn{padding:0 10px;font-size:12.5px}
+#tour.on~.demobtn,.screen:has(#tour.on) .demobtn{opacity:0;pointer-events:none}
+#sug{display:block!important;opacity:0;visibility:hidden;transform:translate3d(0,-4px,0);transition:opacity var(--d3) var(--in),transform var(--d3) var(--in),visibility 0s linear var(--d3)}
+#sug.on{opacity:1;visibility:visible;transform:none;transition:opacity var(--d3) var(--in),transform var(--d3) var(--in),visibility 0s}
+#feedres.swap{opacity:0;transition:opacity var(--d2) var(--out)}#feedres{transition:opacity var(--d2) var(--in)}
+body.mob .aboutbtn{bottom:140px}body.mob .demobtn{bottom:142px!important}
