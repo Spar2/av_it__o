@@ -27,7 +27,7 @@ function smoothTo(el,start){return new Promise(res=>{const h=host(),r=el.getBoun
  if(RM.matches){sc?sc.scrollTop=to:scrollTo({top:to,behavior:'auto'});res();return}
  const dur=400,t0=performance.now(),e=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
  (function f(now){const p=Math.min(1,(now-t0)/dur),y=from+(to-from)*e(p);sc?sc.scrollTop=y:scrollTo(0,y);p<1?requestAnimationFrame(f):res()})(t0)})}
-const dwell=i=>(i===3||i===6)?2500:2000;
+const dwell=i=>((i===3||i===6)?2500:2000)*(window.DEMO_SLOW||1);
 function tipHTML(s){const n=STEPS.length,i=tour.i;return `<div class="tbody"><div class="tstep">Шаг ${i+1} из ${n}<span class="tdots">${STEPS.map((_,k)=>`<b class="${k===i?'on':''}"></b>`).join('')}</span></div><div class="ttext">${s.t}</div></div><div class="tprog"><i></i></div><div class="tbtns"><button class="btn grey sm" id="tclose" onclick="tourEnd()">Закрыть</button><button class="btn grey sm" id="tauto" onclick="tourAuto()">${auto&&!paused?'❚❚ Пауза':'▶ Авто'}</button><span style="flex:1"></span>${i?'<button class="btn grey sm" id="tback" onclick="tourStep(-1)">Назад</button>':''}<button class="btn blue sm" id="tnext" onclick="${i<n-1?'tourStep(1)':'tourEnd()'}">${i<n-1?'Далее':'Готово'}</button></div>`}
 function setProg(p,ms){const bar=tip.querySelector('.tprog i');if(!bar)return;prog&&prog.cancel();prog=null;tip.querySelector('.tprog').style.visibility=auto?'visible':'hidden';
  if(ms&&bar.animate){prog=bar.animate([{transform:`scaleX(${p})`},{transform:'scaleX(1)'}],{duration:ms,easing:'linear',fill:'forwards'})}else bar.style.transform=`scaleX(${p})`}
