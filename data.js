@@ -1,0 +1,95 @@
+// Все данные прототипа условные (иллюстративные)
+window.DATA = {
+  interestsAll: ["iPhone 11","Sony A6400","MacBook Air M1","AirPods Pro","PlayStation 5","Винтажные часы","Nintendo Switch OLED","Kindle"],
+  interestsDefault: ["iPhone 11","Sony A6400","MacBook Air M1"],
+  chips: [
+    {id:"all",name:"Для вас"},{id:"phones",name:"Смартфоны"},{id:"laptops",name:"Ноутбуки"},
+    {id:"photo",name:"Фототехника"},{id:"audio",name:"Аудио"},{id:"games",name:"Игры"},{id:"vintage",name:"Винтаж"},{id:"books",name:"Книги"}
+  ],
+  models: {
+    "iphone11": {name:"iPhone 11", cat:"phones", icon:"phone", color:["#e9f6ff","#b9e3ff"], rating:4.7, reviews:1284,
+      price:"от 14 500 ₽", summary:"Смартфон Apple 2019 года. 6,1″ LCD, A13 Bionic, двойная камера 12 Мп, Face ID. Память 64 / 128 / 256 ГБ.",
+      specs:[["Экран","6,1″ Liquid Retina"],["Процессор","A13 Bionic"],["Камера","2 × 12 Мп"],["Аккумулятор","3110 мА·ч"]]},
+    "a6400": {name:"Sony A6400", cat:"photo", icon:"camera", color:["#fff1e6","#ffd2ad"], rating:4.8, reviews:412, price:"от 52 000 ₽",
+      summary:"Беззеркальная камера APS-C, 24 Мп, быстрый автофокус, 4K-видео.", specs:[["Матрица","APS-C 24 Мп"],["Видео","4K 30p"]]},
+    "mba-m1": {name:"MacBook Air M1", cat:"laptops", icon:"laptop", color:["#f1ecff","#d6c6ff"], rating:4.9, reviews:2210, price:"от 48 000 ₽",
+      summary:"Ноутбук Apple 13,3″ на чипе M1, без вентилятора, до 18 ч работы.", specs:[["Чип","Apple M1"],["Экран","13,3″ Retina"]]},
+    "airpods": {name:"AirPods Pro", cat:"audio", icon:"buds", color:["#eafaf0","#bdf0cf"], rating:4.6, reviews:3105, price:"от 6 900 ₽",
+      summary:"Беспроводные наушники Apple с активным шумоподавлением.", specs:[["ANC","есть"],["Кейс","MagSafe"]]},
+    "ps5": {name:"PlayStation 5", cat:"games", icon:"console", color:["#e8eeff","#b8c8ff"], rating:4.8, reviews:1890, price:"от 38 000 ₽",
+      summary:"Игровая консоль Sony, SSD 825 ГБ, 4K/120 Гц.", specs:[["SSD","825 ГБ"],["Версия","Disc / Digital"]]},
+    "switch": {name:"Nintendo Switch OLED", cat:"games", icon:"console", color:["#ffecec","#ffc4c4"], rating:4.8, reviews:640, price:"от 21 000 ₽",
+      summary:"Гибридная консоль Nintendo с OLED-экраном 7″.", specs:[["Экран","7″ OLED"],["Память","64 ГБ"]]},
+    "kindle": {name:"Kindle", cat:"books", icon:"reader", color:["#eef2f0","#cfdad4"], rating:4.7, reviews:520, price:"от 6 000 ₽",
+      summary:"Электронные книги Amazon с экраном E Ink.", specs:[["Экран","6,8″ E Ink"],["Защита","IPX8"]]},
+    "seiko": {name:"Seiko 5 (СССР-эпоха)", cat:"vintage", icon:"watch", color:["#fff6e0","#ffe39e"], rating:4.5, reviews:96, price:"от 7 000 ₽",
+      summary:"Винтажные механические часы 70–80-х годов.", specs:[["Механизм","автоподзавод"]]}
+  },
+  listings: [
+    {id:"l1", ph:1, model:"iphone11", title:"iPhone 11, 128 ГБ, чёрный", price:"21 900 ₽", old:"", place:"Москва, Таганская", date:"сегодня в 09:12", seller:"Алексей", sellerRating:4.9, sellerDeals:37,
+     desc:"Состояние хорошее, без сколов. АКБ 86%. Комплект: коробка, кабель. Не ремонтировался, Face ID работает.",
+     questions:[
+       {id:"q1", user:"Марина", text:"Аккумулятор менялся? Сколько держит день?", answer:"Не менялся, родной 86%. При активном использовании — до вечера.", likes:24, top:true},
+       {id:"q2", user:"Дмитрий", text:"Есть ли царапины на экране под плёнкой?", answer:"Пара микроцарапин, на включённом экране не видно. Фото добавил 4-м.", likes:11},
+       {id:"q3", user:"Ольга", text:"Это российская версия или американская?", answer:"Ростест, модель MWM02RU/A, eSIM поддерживается.", likes:9},
+       {id:"q4", user:"Игорь", text:"Проверяли True Tone и Face ID после обновления до iOS 18?", answer:"", likes:2}
+     ]},
+    {id:"l2", model:"mba-m1", title:"MacBook Air 13 M1 8/256", price:"47 990 ₽", old:"55 000 ₽", place:"Москва, Краснопресненская", date:"вчера", seller:"Ника", sellerRating:5.0, sellerDeals:12,
+     desc:"Циклов 143, без вмятин, чек есть.", questions:[{id:"q5",user:"Пётр",text:"Сколько циклов у батареи?",answer:"143 цикла, ёмкость 94%.",likes:15,top:true},{id:"q6",user:"Аня",text:"Клавиатура английская?",answer:"Русская гравировка, заводская.",likes:4}]},
+    {id:"l3", model:"a6400", title:"Sony A6400 body, пробег 8к", price:"58 000 ₽", old:"", place:"Москва, Савёловская", date:"2 дня назад", seller:"Фотостудия Кадр", sellerRating:4.8, sellerDeals:120,
+     desc:"Пробег 8 тыс. кадров, сенсор чистый.", questions:[{id:"q7",user:"Кирилл",text:"Перегревается при записи 4K?",answer:"Записывал 25 мин без остановки в помещении — норм.",likes:19,top:true}]},
+    {id:"l4", ph:4, model:"iphone11", title:"iPhone 11, 64 ГБ, белый", price:"16 500 ₽", old:"18 000 ₽", place:"Москва, Митино", date:"сегодня в 07:40", seller:"Саша", sellerRating:4.6, sellerDeals:5,
+     desc:"АКБ 79%, замена экрана в сервисе.", questions:[{id:"q8",user:"Лена",text:"Экран оригинальный?",answer:"Нет, качественная копия, True Tone перенесён.",likes:7,top:true},{id:"q9",user:"Вова",text:"Торг уместен?",answer:"",likes:0}]},
+    {id:"l5", model:"airpods", title:"AirPods Pro 2, оригинал", price:"12 400 ₽", old:"", place:"Москва, Арбатская", date:"сегодня", seller:"Гоша", sellerRating:4.9, sellerDeals:21,
+     desc:"Полный комплект, проверка по серийнику.", questions:[]},
+    {id:"l6", model:"ps5", title:"PlayStation 5 с дисководом + 2 геймпада", price:"41 000 ₽", old:"", place:"Москва, Сокол", date:"3 дня назад", seller:"Рома", sellerRating:4.7, sellerDeals:9,
+     desc:"Ревизия CFI-1200, гарантия закончилась.", questions:[{id:"q10",user:"Артём",text:"Шумит под нагрузкой?",answer:"Тише старой ревизии, в комнате почти не слышно.",likes:6,top:true}]},
+    {id:"l7", ph:3, model:"iphone11", title:"iPhone 11, 256 ГБ, фиолетовый", price:"24 700 ₽", old:"", place:"Москва, Сокольники", date:"сегодня", seller:"Женя", sellerRating:5.0, sellerDeals:3,
+     desc:"Как новый, АКБ 91%.", questions:[{id:"q11",user:"Таня",text:"Есть чек?",answer:"Чек и коробка есть.",likes:3,top:true}]},
+    {id:"l8", model:"seiko", title:"Часы Seiko 5, 1978 год", price:"9 500 ₽", old:"", place:"Москва, Чистые пруды", date:"неделю назад", seller:"Антиквар", sellerRating:4.8, sellerDeals:64,
+     desc:"Ход отличный, после обслуживания.", questions:[]}
+    ,{id:"l9", model:"switch", title:"Nintendo Switch OLED, белая", price:"23 500 ₽", old:"", place:"Москва, Тверская", date:"сегодня", seller:"Миша", sellerRating:4.9, sellerDeals:14,
+     desc:"Без дрифта стиков, плёнка с первого дня.", questions:[{id:"q12",user:"Ира",text:"Джойконы дрифтят?",answer:"Нет, проверял в тесте стиков — ровно.",likes:8,top:true},{id:"q13",user:"Олег",text:"Прошита?",answer:"Нет, официальная, аккаунт отвязан.",likes:5}]},
+    {id:"l10", model:"kindle", title:"Kindle Paperwhite 5, 8 ГБ", price:"8 900 ₽", old:"10 500 ₽", place:"Москва, Динамо", date:"вчера", seller:"Ника", sellerRating:5.0, sellerDeals:12,
+     desc:"Русифицирован, в чехле.", questions:[{id:"q14",user:"Света",text:"Битые пиксели есть?",answer:"Нет, экран без пятен, фото подсветки в галерее.",likes:6,top:true}]},
+    {id:"l11", model:"mba-m1", title:"MacBook Air M1 16/512, серый", price:"62 000 ₽", old:"", place:"Москва, Белорусская", date:"сегодня", seller:"Алексей", sellerRating:4.9, sellerDeals:37,
+     desc:"Циклов 88, коробка, чек.", questions:[{id:"q15",user:"Денис",text:"Есть ли следы залития?",answer:"Нет, вскрывал на диагностике — чисто, фото есть.",likes:12,top:true},{id:"q16",user:"Юля",text:"Отдадите за 58?",answer:"",likes:0}]},
+    {id:"l12", model:"a6400", title:"Sony A6400 + 18-135, кит", price:"71 000 ₽", old:"", place:"Москва, Курская", date:"сегодня", seller:"Кирилл", sellerRating:4.7, sellerDeals:8,
+     desc:"Пробег 15к, второй аккумулятор в подарок.", questions:[]},
+    {id:"l13", model:"airpods", title:"AirPods Pro, левый наушник", price:"3 200 ₽", old:"", place:"Москва, Лефортово", date:"2 дня назад", seller:"Гоша", sellerRating:4.9, sellerDeals:21,
+     desc:"Оригинал, проверен по серийному номеру.", questions:[{id:"q17",user:"Аня",text:"Подойдёт к кейсу первого поколения?",answer:"Да, к Pro 1 подходит, ко 2 — нет.",likes:9,top:true}]},
+    {id:"l14", model:"seiko", title:"Seiko 5 Automatic 6309, 1983", price:"12 000 ₽", old:"", place:"Москва, Китай-город", date:"сегодня", seller:"Антиквар", sellerRating:4.8, sellerDeals:64,
+     desc:"Родной циферблат, после ТО.", questions:[{id:"q18",user:"Глеб",text:"Циферблат родной или перекраска?",answer:"Родной, сверял по каталогу калибра.",likes:7,top:true}]},
+    {id:"l15", model:"ps5", title:"PS5 Digital Edition", price:"33 000 ₽", old:"36 000 ₽", place:"Москва, Аэропорт", date:"вчера", seller:"Рома", sellerRating:4.7, sellerDeals:9,
+     desc:"Без дисковода, коробка.", questions:[]}
+  ],
+  posts: [
+    {id:"p1", ago:40, model:"iphone11", role:"Продавец", author:"Алексей", h:1.25, title:"Как проверить iPhone 11 перед покупкой за 5 минут", likes:342,
+     text:"1) Настройки → Аккумулятор → Состояние. 2) Face ID — настройте лицо прямо при встрече. 3) Проверьте IMEI в настройках и на лотке. 4) Позвоните себе — проверьте динамики и микрофон. 5) «Об этом устройстве» → нет сообщения «неизвестная деталь».",
+     comments:[{user:"Алексей",author:true,text:"Если есть сообщение о неоригинальном дисплее — торгуйтесь, минус 2–3 тыс."},{user:"Полина",text:"Спасибо, пригодилось на встрече!"}]},
+    {id:"p2", ago:300, model:"a6400", role:"Покупатель", author:"Кирилл", h:1.5, title:"Полгода с A6400: что понравилось и что нет", likes:128,
+     text:"Автофокус по глазам — пушка. Минус — аккумулятор FW50, берите второй. Для видео — нужен внешний микрофон.", comments:[{user:"Кирилл",author:true,text:"Пробег смотрел через сайт по EXIF."}]},
+    {id:"p3", ago:90, model:"mba-m1", role:"Продавец", author:"Ника", h:1.0, title:"M1 в 2026: ещё тянет?", likes:211,
+     text:"Для учёбы, офиса и Figma — да. Монтаж 4K — со скрипом. Смотрите на циклы АКБ: до 300 — отлично.", comments:[]},
+    {id:"p4", ago:1500, model:"iphone11", role:"Покупатель", author:"Полина", h:1.4, title:"Купила iPhone 11 за 17к — мой опыт", likes:96,
+     text:"Попросила продавца ответить на вопросы публично — сразу увидела ответы на всё, что хотела спросить. Встретились, проверили по чек-листу.", comments:[{user:"Марина",text:"А какая АКБ была?"},{user:"Полина",author:true,text:"84%, за 2 месяца не упала."}]},
+    {id:"ad", ago:10, model:"airpods", role:"Реклама", author:"re:Store", ad:true, h:1.1, title:"AirPods Pro 2 с гарантией — trade-in старых наушников", likes:0,
+     text:"Сдайте старые наушники и получите скидку до 3 000 ₽.", comments:[]},
+    {id:"p5", ago:2000, model:"ps5", role:"Продавец", author:"Рома", h:1.2, title:"Отличить ревизии PS5 по номеру модели", likes:77,
+     text:"CFI-10xx — самая шумная, CFI-12xx — легче и тише, Slim — CFI-20xx.", comments:[]},
+    {id:"p6", ago:700, model:"seiko", role:"Продавец", author:"Антиквар", h:1.45, title:"Как не нарваться на «сборную» Seiko", likes:58,
+     text:"Сверяйте номер калибра на механизме и номер на задней крышке, смотрите на шрифт циферблата.", comments:[]},
+    {id:"p7", ago:160, model:"iphone11", role:"Покупатель", author:"Игорь", h:1.05, title:"iPhone 11 vs 12 — за что переплачивать?", likes:150,
+     text:"OLED и 5G у 12-го. Если не важно — 11-й дешевле на 6–8 тыс. и по камере почти так же.", comments:[]},
+    {id:"p8", ago:3000, model:"airpods", role:"Покупатель", author:"Гоша", h:1.3, title:"Проверка AirPods на оригинальность", likes:203,
+     text:"Серийник на сайте Apple, анимация подключения, шумоподавление в настройках.", comments:[]}
+    ,{id:"p9", ago:25, model:"switch", role:"Продавец", author:"Миша", h:1.2, title:"Как проверить дрифт джойконов за минуту", likes:64,
+     text:"Настройки → Контроллеры → Калибровка стиков. Отпустите стик: крестик должен стоять ровно в центре.", comments:[]},
+    {id:"p10", ago:420, model:"kindle", role:"Покупатель", author:"Света", h:1.1, title:"Kindle с рук: на что смотреть", likes:41,
+     text:"Включите подсветку на максимум на белом экране — пятна и битые зоны сразу видны. Проверьте, не заблокирован ли аккаунт.", comments:[]},
+    {id:"p11", ago:60, model:"mba-m1", role:"Покупатель", author:"Денис", h:1.3, title:"Залитый MacBook: признаки снаружи", likes:118,
+     text:"Липкие клавиши, разводы под экраном, коррозия у портов. Попросите фото платы, если продавец вскрывал.", comments:[]}
+  ]
+};
+
+window.DATA.photos={"a6400": ["img/a6400_1.jpg", "img/a6400_2.jpg", "img/a6400_3.jpg", "img/a6400_4.jpg"], "airpods": ["img/airpods_1.jpg", "img/airpods_2.jpg", "img/airpods_3.jpg", "img/airpods_4.jpg"], "iphone11": ["img/iphone11_3.jpg", "img/iphone11_4.jpg", "img/iphone11_5.jpg", "img/iphone11_7.jpg", "img/iphone11_8.jpg"], "kindle": ["img/kindle_1.jpg", "img/kindle_2.jpg", "img/kindle_3.jpg", "img/kindle_4.jpg"], "mba-m1": ["img/mba-m1_1.jpg", "img/mba-m1_2.jpg", "img/mba-m1_3.jpg", "img/mba-m1_4.jpg"], "ps5": ["img/ps5_2.jpg", "img/ps5_6.jpg", "img/ps5_7.jpg"], "seiko": ["img/seiko_1.jpg", "img/seiko_2.jpg", "img/seiko_3.jpg", "img/seiko_4.jpg"], "switch": ["img/switch_1.jpg", "img/switch_2.jpg", "img/switch_3.jpg", "img/switch_4.jpg"]};

@@ -1,0 +1,34 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Авито — прототип v3 «Между сделками»</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"></head><body>
+<div id="mob" class="phone"><div class="screen">
+ <main id="app"></main>
+ <nav class="tabbar">
+  <a href="#/" class="tab on" data-r="home"><span class="dots"><i></i><i></i><i></i><i></i></span>Поиск</a>
+  <a href="#/fav" class="tab" data-r="fav"><span class="ic">♡<b>44</b></span>Избранное</a>
+  <a class="tab" onclick="toast('Размещение — вне прототипа')"><span class="ic">＋</span>Объявления</a>
+  <a href="#/chat" class="tab" data-r="chat"><span class="ic">💬<b>22</b></span>Сообщения</a>
+  <a class="tab" onclick="toast('Профиль — вне прототипа')"><span class="ava">Т</span>Профиль</a>
+ </nav>
+ <button class="aboutbtn" onclick="about(true)">i</button>
+</div></div>
+<div id="desk"><div id="dapp"></div><button class="aboutbtn dab" onclick="about(true)">i</button><button class="vpill" onclick="setView('mobile')">📱 Мобильная версия</button></div>
+<div id="about" class="overlay" onclick="if(event.target===this)about(false)"><div class="sheet">
+  <h3>О прототипе</h3>
+  <p class="muted">Команда «Я тебя клодну» · Changellenge Cup, кейс Авито «Между сделками». Знания о вещах привязаны к вещам и моделям; подписки на авторов — дополнительный слой.</p>
+  <ol>
+   <li><b>Публичные вопросы под объявлением.</b> Продавец отвечает один раз — ответ видят все, подсказка с ответом есть прямо в карточке рядом с ценой. Контакты в вопросах фильтруются.</li>
+   <li><b>Лента на главной.</b> Переехала из Избранного: «Поиск | Лента» (в ПК-версии — «Объявления | Лента» и кнопка «Лента» у «Все категории»), вкладки «Для вас | Подписки | Модели», фильтры автора, сортировки, моделей, интересов.</li>
+   <li><b>Посты, привязанные к модели.</b> Пост про iPhone 11 виден в объявлениях этой модели, на странице модели и в ленте.</li>
+   <li><b>Подписки на авторов.</b> «Подписаться» у продавца и автора поста, список подписок с отпиской.</li>
+  </ol>
+  <p class="muted">Все данные, цены, рейтинги и имена условные (демо). Уже существующие функции Авито (отзывы, чипсы «Спросите у продавца») помечены «уже есть», новые — «новое».</p>
+  <div class="fl">Вид для демо</div><div class="seg3"><button onclick="setView('mobile')">📱 Мобильная</button><button onclick="setView('desktop')">🖥 ПК</button><button onclick="setView('auto')">Авто</button></div>
+  <div class="abtns"><button class="btn blue" onclick="tourStart()">▶ Пройти демо</button><button class="btn grey" id="resetbtn" onclick="resetDemo()">Сбросить демо</button><button class="btn grey" onclick="about(false)">Закрыть</button></div>
+  <p class="muted" style="font-size:11.5px;margin-top:10px">Фото товаров: Wikimedia Commons (CC BY / CC BY-SA / CC0 / PD), авторы и лицензии — в README.</p></div></div>
+<div id="modal" class="overlay" onclick="if(event.target===this)modal()"><div class="sheet"></div></div>
+<div id="toast"></div>
+<div id="tour"><div class="spot"></div><div class="tip"></div></div>
+<button class="demobtn" onclick="tourStart()">▶ Пройти демо</button>
+<script src="data.js"></script><script src="app.js"></script><script src="v3.js"></script></body></html>
