@@ -188,4 +188,4 @@ function tourEnd(){tour.on=false;$('#tour').classList.remove('on');toast('Дем
 window.addEventListener('resize',()=>tour.on&&tourPlace());
 /* ---- старт ---- */
 render();
-if(!LS.get('seenAbout',false)&&!location.search.includes('qa')){LS.set('seenAbout',true);setTimeout(()=>about(true),400)}
+

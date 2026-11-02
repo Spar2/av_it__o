@@ -64,3 +64,23 @@ body.mob .tbtns .btn{padding:0 10px;font-size:12.5px}
 #sug.on{opacity:1;visibility:visible;transform:none;transition:opacity var(--d3) var(--in),transform var(--d3) var(--in),visibility 0s}
 #feedres.swap{opacity:0;transition:opacity var(--d2) var(--out)}#feedres{transition:opacity var(--d2) var(--in)}
 body.mob .aboutbtn{bottom:140px}body.mob .demobtn{bottom:142px!important}
+/* welcome slides */
+#welcome{position:fixed;inset:0;z-index:80;background:rgba(10,12,16,.45);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity var(--d3) var(--in),visibility 0s linear var(--d3);font-family:Manrope,system-ui,sans-serif}
+#welcome.on{opacity:1;visibility:visible;transition:opacity var(--d3) var(--in),visibility 0s}
+.wcard{background:#fff;border-radius:20px;width:min(760px,calc(100vw - 40px));padding:28px 28px 20px;box-shadow:0 24px 70px rgba(0,0,0,.22);transform:translate3d(0,24px,0);transition:transform var(--d4) var(--expr)}
+#welcome.on .wcard{transform:none}
+.wtrack{display:grid}.wslide{grid-area:1/1;opacity:0;transform:translate3d(32px,0,0);transition:opacity var(--d3) var(--in),transform var(--d4) var(--expr);pointer-events:none}
+.wslide.prev{transform:translate3d(-32px,0,0)}.wslide.on{opacity:1;transform:none;pointer-events:auto}
+.wimg{border-radius:16px;overflow:hidden;background:#F2F1F0;aspect-ratio:1140/640;margin-bottom:18px;box-shadow:inset 0 0 0 1px #eee}.wimg img{width:100%;height:100%;object-fit:cover;display:block;opacity:1!important}
+.wlogo{display:grid;grid-template-columns:repeat(2,22px);gap:6px;margin:6px 0 22px}.wlogo i{width:22px;height:22px;border-radius:50%}.wlogo i:nth-child(1){background:#00AAFF}.wlogo i:nth-child(2){background:#02D15C}.wlogo i:nth-child(3){background:#FF4053}.wlogo i:nth-child(4){background:#965EEB}
+.wslide h2{font-size:28px;line-height:1.15;letter-spacing:-.02em;font-weight:800;margin-bottom:10px}.wslide p{font-size:16px;line-height:1.5;color:#333;max-width:620px}
+.wtag{display:inline-block;border-radius:6px;padding:1px 6px;font-size:12px;font-weight:700;background:#eee;color:#555}
+.wlast{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.wnav{display:flex;align-items:center;gap:8px;margin-top:22px}.wdots{display:flex;gap:6px;margin:0 auto}.wdots b{width:8px;height:8px;border-radius:4px;background:#DADCE0;transition:transform var(--d3) var(--expr),background-color var(--d3)}.wdots b.on{background:#00AAFF;transform:scale(1.3)}
+body.mob #welcome{background:#fff}body.mob .wcard{width:100%;height:100%;border-radius:0;box-shadow:none;display:flex;flex-direction:column;padding:28px 18px 18px}body.mob .wtrack{flex:1}body.mob .wslide h2{font-size:24px}body.mob .wslide p{font-size:15px}body.mob .wnav .btn{padding:0 10px}
+/* заметнее: мобильная версия и Лента */
+.vpill{background:#00AAFF!important;opacity:1!important;font-size:14px!important;padding:10px 16px!important;border-radius:14px!important;box-shadow:0 6px 18px rgba(0,170,255,.35)}
+[data-mode=feed].hint{animation:hint 1.3s var(--expr) 3}
+@keyframes hint{0%,100%{transform:none}40%{transform:scale(1.06)}}
+[data-mode=feed]{position:relative}[data-mode=feed].hint::after{content:"";position:absolute;inset:-3px;border-radius:14px;box-shadow:0 0 0 2px #00AAFF;animation:hintR 1.3s var(--expr) 3;pointer-events:none}
+@keyframes hintR{from{opacity:.9;transform:scale(.96)}to{opacity:0;transform:scale(1.12)}}
